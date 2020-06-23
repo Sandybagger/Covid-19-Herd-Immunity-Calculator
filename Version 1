@@ -1,0 +1,18 @@
+#current best estimates from cdc
+death_rate = 0.004
+R0 = 2.5
+#asks the user to input data
+total_deaths = int(input("Search up the total deaths for a state and enter it here: "))
+total_population = int(input("Search up the total population for the state and enter it here: "))
+#outputs the percentage needed for herd immunity
+herd_immunity = round((1 - 1/R0) * 100)
+print(str(herd_immunity) + "% of the population needs to have antibodies to achieve herd immunity")
+#outputs the percent of the population with antibodies
+total_cases = total_deaths / death_rate
+percent_antibodies = round((total_cases / total_population) * 100)
+print(str(percent_antibodies) + "% of the population currently has antibodies for Covid-19")
+#determines if population has achieved herd immunity
+if percent_antibodies > herd_immunity:
+    print("The population has achieved herd immunity")
+elif herd_immunity > percent_antibodies:
+    print("The population has not yet achieved herd immunity")
